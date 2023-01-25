@@ -4,9 +4,7 @@ import { Filter } from '../filter/filter';
 import { Wrapper } from './App.styled';
 import { useSelector, useDispatch } from 'react-redux';
 import {
-  fetchContacts,
-  addContact,
-  removeContact,
+  fetchContacts
 } from 'redux/contacts/contact-operation';
 import { setFilter } from '../../redux/filter/filter-slice';
 import { getFilter } from '../../redux/filter/filter-selectors';
@@ -28,10 +26,7 @@ export default function App() {
   }, [dispatch]);
 
 
-  const handleChange = ({ target }) => {
-    console.log(target.value);
-    dispatch(setFilter(target.value));
-  };
+  
 
   return (
     <Wrapper>
@@ -43,7 +38,7 @@ export default function App() {
         type="text"
         value={filter}
         name="filter"
-        onChange={handleChange}
+        
         placeholder="filter"
       />
       <ListContact items={contacts} />

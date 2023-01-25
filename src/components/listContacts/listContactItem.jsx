@@ -1,5 +1,4 @@
 import { memo } from 'react';
-import  ListContact  from '../listContacts/listContacts';
 import { TableTh, DeleteBtn } from './listContacts.styled';
 const ContactsListItem = ({ id, name, number, removeContact }) => {
   return (
