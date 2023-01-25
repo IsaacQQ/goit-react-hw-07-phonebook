@@ -1,5 +1,5 @@
 import Form from '../form/form';
-import ListContact from '../listContacts/listContacts';
+import {ListContact} from '../listContacts/listContacts';
 import { Filter } from '../filter/filter';
 import { Wrapper } from './App.styled';
 import { useSelector, useDispatch } from 'react-redux';
@@ -27,15 +27,6 @@ export default function App() {
     dispatch(fetchContacts());
   }, [dispatch]);
 
-  const onAddContact = contact => {
-    const action = addContact(contact);
-    dispatch(action);
-  };
-
-  const onRemoveContact = id => {
-    const action = removeContact(id);
-    dispatch(action);
-  };
 
   const handleChange = ({ target }) => {
     console.log(target.value);
@@ -45,7 +36,7 @@ export default function App() {
   return (
     <Wrapper>
       <h1>Phonebook</h1>
-      <Form onSubmit={onAddContact} />
+      <Form />
       <h1>Contacts</h1>
       <p>You have: {contactsCount} books in our phonebook</p>
       <Filter
@@ -55,7 +46,7 @@ export default function App() {
         onChange={handleChange}
         placeholder="filter"
       />
-      <ListContact items={contacts} removeContact={onRemoveContact} />
+      <ListContact items={contacts} />
       {error && <p>oops, something went wrong</p>}
     </Wrapper>
   );

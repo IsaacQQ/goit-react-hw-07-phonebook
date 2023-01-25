@@ -1,10 +1,16 @@
-import PropTypes from 'prop-types';
 import ContactsListItem from './listContactItem';
 import { Table } from './listContacts.styled';
+import { removeContact } from 'redux/contacts/contact-operation';
+import { useDispatch } from 'react-redux';
 
-const ListContact = ({ items, removeContact }) => {
+export function ListContact  ({ items }) {
+  const dispatch = useDispatch();
+  const onRemoveContact = id => {
+    const action = removeContact(id);
+    dispatch(action);
+  };
   const elements = items.map(item => (
-    <ContactsListItem key={item.id} {...item} removeContact={removeContact} />
+    <ContactsListItem key={item.id} {...item} removeContact={onRemoveContact} />
   ));
   return (
     <Table>
@@ -20,21 +26,9 @@ const ListContact = ({ items, removeContact }) => {
   );
 };
 
-ListContact.defaultProps = {
-  items: [],
-};
 
-ListContact.propTypes = {
-  items: PropTypes.arrayOf(
-    PropTypes.exact({
-      id: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      number: PropTypes.string.isRequired,
-    })
-  ),
-};
 
-export default ListContact;
+
 
 
 

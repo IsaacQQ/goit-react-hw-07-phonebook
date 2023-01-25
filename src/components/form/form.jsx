@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+
 import React from 'react';
 import { nanoid } from 'nanoid';
 import {
@@ -9,8 +9,15 @@ import {
   ButtonAddContact,
 } from './form.styled';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { addContact } from 'redux/contacts/contact-operation';
 
-export default function Form({ onSubmit }) {
+export default function Form() {
+  const dispatch = useDispatch()
+  const onSubmit = contact => {
+    const action = addContact(contact);
+    dispatch(action);
+  };
   const [state, setState] = useState({
     name: '',
     number: '',
@@ -67,13 +74,10 @@ export default function Form({ onSubmit }) {
           onChange={handleChange}
         ></FormFieldInput>
       </FormField>
-      <ButtonAddContact type="submit" className="InputFieldButton">
+      <ButtonAddContact type="submit" className="InputFieldButton" onSubmit={onSubmit}>
         Add contact
       </ButtonAddContact>
     </InputForm>
   );
 }
 
-Form.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-};
