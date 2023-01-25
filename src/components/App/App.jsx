@@ -6,7 +6,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import {
   fetchContacts
 } from 'redux/contacts/contact-operation';
-import { setFilter } from '../../redux/filter/filter-slice';
 import { getFilter } from '../../redux/filter/filter-selectors';
 import {
   getNumberOfAllContacts,
@@ -38,7 +37,6 @@ export default function App() {
         type="text"
         value={filter}
         name="filter"
-        
         placeholder="filter"
       />
       <ListContact items={contacts} />
