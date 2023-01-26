@@ -6,7 +6,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import {
   fetchContacts
 } from 'redux/contacts/contact-operation';
-import { getFilter } from '../../redux/filter/filter-selectors';
 import {
   getNumberOfAllContacts,
   getState,
@@ -14,7 +13,6 @@ import {
 import { useEffect } from 'react';
 
 export default function App() {
-  const contacts = useSelector(getFilter);
   const { error } = useSelector(getState);
   const filter = useSelector(store => store.filter);
   const contactsCount = useSelector(getNumberOfAllContacts);
@@ -39,7 +37,7 @@ export default function App() {
         name="filter"
         placeholder="filter"
       />
-      <ListContact items={contacts} />
+      <ListContact />
       {error && <p>oops, something went wrong</p>}
     </Wrapper>
   );

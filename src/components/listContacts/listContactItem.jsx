@@ -1,6 +1,7 @@
-import { memo } from 'react';
 import { TableTh, DeleteBtn } from './listContacts.styled';
-const ContactsListItem = ({ id, name, number, removeContact }) => {
+
+
+export const ContactsListItem = ({ id, name, number, removeContact }) => {
   return (
     <tr>
       <TableTh>{name}</TableTh>
@@ -13,5 +14,3 @@ const ContactsListItem = ({ id, name, number, removeContact }) => {
     </tr>
   );
 };
-
-export default memo(ContactsListItem);
